@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tilbakemelding</title>
+</head>
+<body>
+    <h2>Tilbakemeldingsskjema</h2>
+    <form action="/" method="POST">
+        <div>
+            <label for="name">Navn:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="email">E-postadresse:</label>
+            <input type="email" id="email" name="email" required>
+        </div>    
+        <div>
+            <label for="message">Tilbakemelding:</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        <div>
+            <button type="submit">Send inn</button>
+        </div>
+
+    </form>
+</body>
+</html>
