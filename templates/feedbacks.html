@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alle tilbakemeldinger</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Alle tilbakemeldinger</h2>
+        <ul>
+            {% for feedback in feedbacks %}
+                <li><strong>{{ feedback[0] }}</strong> ({{ feedback[1] }}): {{ feedback[2] }}</li>
+            {% endfor %}
+        </ul>
+        <br>
+        <a href="/">Gå tilbake til skjema</a>
+    </div>
+</body>
+</html>
