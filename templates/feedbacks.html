@@ -9,11 +9,24 @@
 <body>
     <div class="container">
         <h2>Alle tilbakemeldinger</h2>
-        <ul>
-            {% for feedback in feedbacks %}
-                <li><strong>{{ feedback[0] }}</strong> ({{ feedback[1] }}): {{ feedback[2] }}</li>
-            {% endfor %}
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Navn</th>
+                    <th>E-postadresse</th>
+                    <th>Tilbakemelding</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for feedback in feedbacks %}
+                    <tr>
+                        <td>{{ feedback[0] }}</td>
+                        <td>{{ feedback[1] }}</td>
+                        <td>{{ feedback[2] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         <br>
         <a href="/">Gå tilbake til skjema</a>
     </div>
