@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tilbakemelding mottatt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h2>Din tilbakemelding</h2>
-    <p><strong>Navn:</strong> {{ name }}</p>
-    <p><strong>E-postadresse:</strong> {{ email }}</p>
-    <p><strong>Tilbakemelding:</strong> {{ message }}</p>
-    <a href="/">Gå tilbake</a>
+    <div class="result-container">
+        <h2>Din tilbakemelding</h2>
+        <p><strong>Navn:</strong> {{ name }}</p>
+        <p><strong>E-postadresse:</strong> {{ email }}</p>
+        <p><strong>Tilbakemelding:</strong> {{ message }}</p>
+        <a href="/">Gå tilbake</a>
+    </div>
 </body>
 </html>
