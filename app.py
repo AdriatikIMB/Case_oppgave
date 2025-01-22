@@ -4,13 +4,10 @@ import os
 
 app = Flask(__name__)
 
-# Funksjon for å sette opp databasen
 def start_db():
-    # Sjekk om databasen allerede eksisterer
     if not os.path.exists("tilbakemeldinger.db"):
         conn = sqlite3.connect("tilbakemeldinger.db")
         cursor = conn.cursor()
-        # Opprett tabellen med de riktige kolonnene
         cursor.execute(''' 
             CREATE TABLE IF NOT EXISTS tilbakemeldinger (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,7 +19,7 @@ def start_db():
         conn.commit()
         conn.close()
 
-start_db()  # Start databasen ved oppstart av appen
+start_db()
 
 @app.route('/', methods=['GET'])
 def index():
@@ -34,18 +31,18 @@ def result():
     email = request.form.get('email')
     message = request.form.get('message')
     
-    # Lagre dataene i databasen
+    if not name or not email or not message:
+        return "Alle feltene må fylles ut! <a href='/'>Gå tilbake</a>"
+    
     conn = sqlite3.connect("tilbakemeldinger.db")
     cursor = conn.cursor()
     cursor.execute("INSERT INTO tilbakemeldinger (navn, email, message) VALUES (?, ?, ?)", 
-                   (name, email, message))  # Bruker plassholdere
+                   (name, email, message))
     conn.commit()
     conn.close()
 
-    # Vis resultatet
     return render_template('result.html', name=name, email=email, message=message)
 
-# Route for å vise alle tilbakemeldinger
 @app.route('/feedbacks', methods=['GET'])
 def feedbacks():
     conn = sqlite3.connect("tilbakemeldinger.db")
